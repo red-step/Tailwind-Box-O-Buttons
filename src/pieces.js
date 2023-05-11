@@ -31,30 +31,50 @@ export class ButtonRow extends React.Component{
     buttons: this.props.buttons
   }
 
-  handleClick = (newButton) =>{
-
-    this.setState(prevState => ({
-      buttons: [...prevState.buttons, newButton]
+  updateState = () =>{
+    const newButton = {onClick: this.updateState, label: this.newLabel};
+    console.log("this buttons");
+    console.log(this.state.buttons);
+    const nextlabel = 'b'+ (this.state.buttons.length + 2);
+    console.log(nextlabel);
+    console.log("update state");
+    this.setState(state => ({
+      buttons: [...this.state.buttons, newButton]
 
     }));
+
+    return (
+      this.makeNewButton(this.newLable)  //RECURSION HERE IS CONFUSING ME!!
+    );
+    }
+  
+  makeNewButton = (newLabel) => {
+    return (
+      <ClickableButton onClick={() => this.updateState}>
+        {newLabel}
+      </ClickableButton>
+      );
   }
+
+
+
+  
   render() {
-    console.log(this.props);
+    //console.log("rendering row");
     const { buttons } = this.state;
-    console.log(this.state);
+    //console.log(this.state);
     return (
       <div>
         {buttons.map((button, index) => (
           <ClickableButton
             key = {index}
-            onClick = {this.HandleClick}
-            newButton = {{ onClick: this.handleClick, label: `button ${index + 2}`}}
+            onClick = {this.updateState}
             label = {button.label}
             />
         ))}
           <ClickableButton
-            onClick = {this.HandleClick}
-            newButton = {{ onClick: this.handleClick, label: `button ${buttons.length + 2}`}}
+            key = {500}
+            onClick = {this.updateState}
             label = "Add button"
             />
       </div>
@@ -64,18 +84,25 @@ export class ButtonRow extends React.Component{
 }
 
 export class ClickableButton extends React.Component {
-  handleClick = () => {
-    console.log(this.props);
-    const {onClick, newButton} = this.props;
-    onClick(newButton);
-    console.log(`making a new button!`);
-  }
+  //handleClick = () => {
+  //
+    // USE THIS FUNCTION TO CREATE A NEW BUTTON: the new button function actually gets passed in.
+
+  //  const {handleClick, newLabel} = this.props;
+   // console.log(`making a new button!`);
+ 
+  //}
 
   render() {
-    const { label } = this.props;
+    //console.log("new clickable button");
+    //console.log(this.props);
+    const {thisClick, newLabel} = this.props;
+    //console.log("this click fun");
+    //console.log(thisClick);
+    //console.log(newLabel)
     return (
-      <button onClick={() => this.handleClick}>
-        {label}
+      <button onClick={this.props.onClick}>
+        HI:  {this.props.label}
       </button>
     );
   }
