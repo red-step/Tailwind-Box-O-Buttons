@@ -3,7 +3,8 @@
 //import './App.css';
 
 // App.js 
-
+import React from 'react';
+import {ButtonRow} from './pieces'
 import { useState } from 'react';
 import {classnames} from 'tailwindcss-classnames';
 //import Calendar from 'react-calendar';
@@ -13,13 +14,29 @@ import './App.css';
 import {DiffuseColor} from './pieces.js';
 
 
-function App() {
-  const [date, setDate] = useState(new Date());
-  var color = '808080'
-  var newcolor = DiffuseColor(color)
-  console.log(newcolor)
-  return (
-    <div className='app'>
+class App extends React.Component {
+  handleClick = () => {
+    console.log('Button Clicked! ');
+  }
+
+  render() {
+    const buttons = [
+      {onClick: this.handleClick, label: 'Button 1'}, 
+      {onClick: this.handleClick, label: 'Button 2'},
+      {onClick: this.handleClick, label: 'Button 3'},
+    ];
+
+    return(
+      <div>
+        <ButtonRow buttons = {buttons} />
+      </div>
+    )
+
+  }
+}
+    
+    
+    {/*<div className='app'>
       <h1 className='text-center'>React Calendar</h1>
         <div className='box'>
           <Box
@@ -46,8 +63,7 @@ function App() {
         <span className='bold'>Selected Date:</span>{' '}
         {date.toDateString()}
   </p>*/}
-    </div>
-  );
-}
+
+
 
 export default App;

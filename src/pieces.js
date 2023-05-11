@@ -25,18 +25,23 @@ export function DiffuseColor(prevColor){
 }
 
 export class ButtonRow extends React.Component{
+
   state = {
-    buttons: []
+
+    buttons: this.props.buttons
   }
 
   handleClick = (newButton) =>{
+
     this.setState(prevState => ({
       buttons: [...prevState.buttons, newButton]
 
     }));
   }
   render() {
-    const { buttons } = this.state
+    console.log(this.props);
+    const { buttons } = this.state;
+    console.log(this.state);
     return (
       <div>
         {buttons.map((button, index) => (
@@ -49,8 +54,8 @@ export class ButtonRow extends React.Component{
         ))}
           <ClickableButton
             onClick = {this.HandleClick}
-            newButton = {{ onClick: this.handleClick, label: `button ${index + 2}`}}
-            label = {button.label}
+            newButton = {{ onClick: this.handleClick, label: `button ${buttons.length + 2}`}}
+            label = "Add button"
             />
       </div>
 
@@ -60,6 +65,7 @@ export class ButtonRow extends React.Component{
 
 export class ClickableButton extends React.Component {
   handleClick = () => {
+    console.log(this.props);
     const {onClick, newButton} = this.props;
     onClick(newButton);
     console.log(`making a new button!`);
