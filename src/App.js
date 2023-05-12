@@ -7,6 +7,7 @@ import React from 'react';
 import {ButtonRow} from './pieces'
 import { useState } from 'react';
 import {classnames} from 'tailwindcss-classnames';
+import {ButtonType, ButtonSize} from './button_theme';
 //import Calendar from 'react-calendar';
 import Box from  './pieces.js';
 import {MyButton} from './pieces.js';

@@ -70,12 +70,14 @@ export class ButtonRow extends React.Component{
             key = {index}
             onClick = {this.updateState}
             label = {button.label}
+            type = 'primary'
             />
         ))}
           <ClickableButton
             key = {500}
             onClick = {this.updateState}
             label = "Add button"
+            type = 'primary'
             />
       </div>
 
@@ -100,8 +102,11 @@ export class ClickableButton extends React.Component {
     //console.log("this click fun");
     //console.log(thisClick);
     //console.log(newLabel)
+    const type = 'me';
+    const size = 'lg'
+    const classstr = "bg-[#808080]" + ButtonType[type] + " " + ButtonSize[size] ;
     return (
-      <button onClick={this.props.onClick}>
+      <button className = {classstr}  onClick={this.props.onClick}>
         HI:  {this.props.label}
       </button>
     );
