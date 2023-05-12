@@ -14,6 +14,7 @@ import {MyButton} from './pieces.js';
 import './App.css';
 import {DiffuseColor} from './pieces.js';
 import {getRandomStyle} from './pieces.js';
+import {Title} from './pieces.js';
 
 
 class App extends React.Component {
@@ -30,6 +31,7 @@ class App extends React.Component {
 
     return(
       <div>
+        <Title/>
         <ButtonRow buttons = {buttons} />
       </div>
     )

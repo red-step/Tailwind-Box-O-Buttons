@@ -38,17 +38,23 @@ export function DiffuseColor(prevColor){
     return (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
 }
 
+export const Title = () => (
+
+      <h1 className="font-mono text-4xl font-bold text-sky-800 text-center my-8 ">Tailwind/React Button Generator</h1>
+
+)
+
+
 export class ButtonRow extends React.Component{
 
   state = {
-
     buttons: this.props.buttons
   }
 
   updateState = () =>{
     //const lastColor = this.state.buttons.at(-1).buttonColor
     const newStyle = getRandomStyle()
-    console.log(newStyle)
+    //console.log(newStyle)
     const newButton = {onClick: this.updateState, buttonStyle: newStyle};
     //console.log("this buttons");
     //console.log(this.state.buttons);
@@ -82,7 +88,7 @@ export class ButtonRow extends React.Component{
     const { buttons } = this.state;
     //console.log(this.state);
     return (
-      <div>
+      <div class = "box-border border-4"> 
         {buttons.map((button, index) => (
           <ClickableButton
             key = {index}
@@ -119,8 +125,8 @@ export class ClickableButton extends React.Component {
     //const {thisClick, newColor} = this.props;
     //console.log("this click fun");
     //console.log(thisClick);
-    console.log("here's the button style");
-    console.log(this.props.buttonStyle);
+    //console.log("here's the button style");
+    //console.log(this.props.buttonStyle);
     //const classstr = this.props.buttonStyle + ButtonType[type] + " " + ButtonSize[size] ;
     //console.log(classstr)
     return (
