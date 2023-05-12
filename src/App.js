@@ -13,6 +13,7 @@ import Box from  './pieces.js';
 import {MyButton} from './pieces.js';
 import './App.css';
 import {DiffuseColor} from './pieces.js';
+import {getRandomStyle} from './pieces.js';
 
 
 class App extends React.Component {
@@ -22,9 +23,9 @@ class App extends React.Component {
 
   render() {
     const buttons = [
-      {onClick: this.handleClick, label: 'Button 1'}, 
-      {onClick: this.handleClick, label: 'Button 2'},
-      {onClick: this.handleClick, label: 'Button 3'},
+      {onClick: this.handleClick, buttonStyle: getRandomStyle()}, 
+      {onClick: this.handleClick, buttonStyle: getRandomStyle()},
+      {onClick: this.handleClick, buttonStyle: getRandomStyle()},
     ];
 
     return(

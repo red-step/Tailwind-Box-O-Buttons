@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
-import {ButtonType, ButtonSize} from './button_theme';
+import {ButtonOutline, ButtonSize, ButtonShape, ButtonColor} from './button_theme';
 
-function Box({ children, ...props }) {
-  return <div {...props}>{children}</div>
-}
+//function Box({ children, ...props }) {
+//  return <div {...props}>{children}</div>
+//}
 
-export default Box;
+//export default Box;
 
 function myrandom() {
   return Math.floor(Math.random() * 2) || -1;
 }
+
+function randomProperty(obj){
+  var keys = Object.keys(obj);
+  return obj[keys[ keys.length * Math.random() << 0]];
+};
+
+export function getRandomStyle(){
+  var outline = randomProperty(ButtonOutline);
+  var size =  randomProperty(ButtonSize);
+  var shape = randomProperty(ButtonShape);
+  var color = randomProperty(ButtonColor);
+  return (color+" "+outline+" "+size+" "+shape);
+}
+
 
 export function DiffuseColor(prevColor){
   console.log(prevColor);
@@ -32,26 +46,30 @@ export class ButtonRow extends React.Component{
   }
 
   updateState = () =>{
-    const newButton = {onClick: this.updateState, label: this.newLabel};
-    console.log("this buttons");
-    console.log(this.state.buttons);
-    const nextlabel = 'b'+ (this.state.buttons.length + 2);
-    console.log(nextlabel);
-    console.log("update state");
+    //const lastColor = this.state.buttons.at(-1).buttonColor
+    const newStyle = getRandomStyle()
+    console.log(newStyle)
+    const newButton = {onClick: this.updateState, buttonStyle: newStyle};
+    //console.log("this buttons");
+    //console.log(this.state.buttons);
+    
+    //const nextlabel = 'b'+ (this.state.buttons.length + 2);
+    //console.log(nextlabel);
+    //console.log("update state");
     this.setState(state => ({
       buttons: [...this.state.buttons, newButton]
 
     }));
 
     return (
-      this.makeNewButton(this.newLable)  //RECURSION HERE IS CONFUSING ME!!
+      this.makeNewButton(this.newStyle)  
     );
     }
   
-  makeNewButton = (newLabel) => {
+  makeNewButton = (newStyle) => {
     return (
-      <ClickableButton onClick={() => this.updateState}>
-        {newLabel}
+      <ClickableButton buttonStyle = {newStyle} onClick={() => this.updateState}>
+        B
       </ClickableButton>
       );
   }
@@ -69,16 +87,16 @@ export class ButtonRow extends React.Component{
           <ClickableButton
             key = {index}
             onClick = {this.updateState}
-            label = {button.label}
+            buttonStyle = {button.buttonStyle}
             type = 'primary'
             />
         ))}
-          <ClickableButton
+          {/*<ClickableButton
             key = {500}
             onClick = {this.updateState}
             label = "Add button"
             type = 'primary'
-            />
+        />*/}
       </div>
 
     );
@@ -98,31 +116,30 @@ export class ClickableButton extends React.Component {
   render() {
     //console.log("new clickable button");
     //console.log(this.props);
-    const {thisClick, newLabel} = this.props;
+    //const {thisClick, newColor} = this.props;
     //console.log("this click fun");
     //console.log(thisClick);
-    //console.log(newLabel)
-    const type = 'me';
-    const size = 'lg'
-    const classstr = "bg-[#808080]" + ButtonType[type] + " " + ButtonSize[size] ;
+    console.log("here's the button style");
+    console.log(this.props.buttonStyle);
+    //const classstr = this.props.buttonStyle + ButtonType[type] + " " + ButtonSize[size] ;
+    //console.log(classstr)
     return (
-      <button className = {classstr}  onClick={this.props.onClick}>
-        HI:  {this.props.label}
-      </button>
+      <button className = {this.props.buttonStyle}  onClick={this.props.onClick}>
+      A</button>
     );
   }
 }
 
 
-export function MyButton({size, type, children}) {
+//export function MyButton({size, type, children}) {
   
     // This can be improved. I’m keeping it simple here by joining two strings.
-    const classNames = ButtonType[type] + " " + ButtonSize[size];
+//    const classNames = ButtonType[type] + " " + ButtonSize[size];
   
-    return (
-      <button className={classNames}>{children}</button>
-    )
-  }
+//    return (
+//      <button className={classNames}>{children}</button>
+//    )
+//  }
 
 
 {/*export default function Box2() {
