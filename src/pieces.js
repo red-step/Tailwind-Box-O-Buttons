@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ButtonOutline, ButtonSize, ButtonShape, ButtonColor} from './button_theme';
+import {Outline, Grad, ButtonOutline, ButtonSize, ButtonShape, ButtonColor} from './button_theme';
 
 //function Box({ children, ...props }) {
 //  return <div {...props}>{children}</div>
@@ -17,11 +17,12 @@ function randomProperty(obj){
 };
 
 export function getRandomStyle(){
-  var outline = randomProperty(ButtonOutline);
   var size =  randomProperty(ButtonSize);
   var shape = randomProperty(ButtonShape);
   var color = randomProperty(ButtonColor);
-  return (color+" "+outline+" "+size+" "+shape);
+  var outline = randomProperty(Outline);
+  return (color+" "+outline + " "+ size+" "+shape);
+  //return (outline);
 }
 
 
@@ -40,7 +41,7 @@ export function DiffuseColor(prevColor){
 
 export const Title = () => (
 
-      <h1 className="font-mono text-4xl font-bold text-sky-800 text-center my-8 ">Tailwind/React Button Generator</h1>
+      <h1 className="font-mono text-4xl font-bold text-sky-800 text-center my-8 ">Tailwind & React Button Generator</h1>
 
 )
 
@@ -54,7 +55,7 @@ export class ButtonRow extends React.Component{
   updateState = () =>{
     //const lastColor = this.state.buttons.at(-1).buttonColor
     const newStyle = getRandomStyle()
-    //console.log(newStyle)
+    console.log(newStyle)
     const newButton = {onClick: this.updateState, buttonStyle: newStyle};
     //console.log("this buttons");
     //console.log(this.state.buttons);
@@ -88,7 +89,7 @@ export class ButtonRow extends React.Component{
     const { buttons } = this.state;
     //console.log(this.state);
     return (
-      <div class = "box-border border-4"> 
+      <div className = "box-border border-4"> 
         {buttons.map((button, index) => (
           <ClickableButton
             key = {index}
@@ -131,7 +132,7 @@ export class ClickableButton extends React.Component {
     //console.log(classstr)
     return (
       <button className = {this.props.buttonStyle}  onClick={this.props.onClick}>
-      A</button>
+      </button>
     );
   }
 }
