@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/color-tree/static/css/main.f58c9c28.css",
-    "main.js": "/color-tree/static/js/main.f64f4cba.js",
-    "static/js/787.524a8949.chunk.js": "/color-tree/static/js/787.524a8949.chunk.js",
-    "index.html": "/color-tree/index.html",
-    "main.f58c9c28.css.map": "/color-tree/static/css/main.f58c9c28.css.map",
-    "main.f64f4cba.js.map": "/color-tree/static/js/main.f64f4cba.js.map",
-    "787.524a8949.chunk.js.map": "/color-tree/static/js/787.524a8949.chunk.js.map"
+    "main.css": "/Tailwind-Box-O-Buttons/static/css/main.40bf16af.css",
+    "main.js": "/Tailwind-Box-O-Buttons/static/js/main.3aa23815.js",
+    "static/js/787.efa8dac6.chunk.js": "/Tailwind-Box-O-Buttons/static/js/787.efa8dac6.chunk.js",
+    "index.html": "/Tailwind-Box-O-Buttons/index.html",
+    "main.40bf16af.css.map": "/Tailwind-Box-O-Buttons/static/css/main.40bf16af.css.map",
+    "main.3aa23815.js.map": "/Tailwind-Box-O-Buttons/static/js/main.3aa23815.js.map",
+    "787.efa8dac6.chunk.js.map": "/Tailwind-Box-O-Buttons/static/js/787.efa8dac6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f58c9c28.css",
-    "static/js/main.f64f4cba.js"
+    "static/css/main.40bf16af.css",
+    "static/js/main.3aa23815.js"
   ]
 }
